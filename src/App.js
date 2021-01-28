@@ -9,16 +9,15 @@ function App() {
     fetch('https://pokeapi.co/api/v2/pokemon/?limit=40')
       .then(response => response.json())
       .then(listOfPokemon => {
-        const pokemonContainer = []
 
-        listOfPokemon.results.forEach(pokemon => {
+        Promise.all(listOfPokemon.results.map(pokemon => 
           fetch(pokemon.url)
             .then(response => response.json())
-            .then(singlePokemon => pokemonContainer.push(singlePokemon))
+            .then(singlePokemon => singlePokemon)
+        ))
+          .then(values => setData(values))
         })
-        
-        setData(pokemonContainer)
-      })
+      .catch(error => console.log(error.message))
   }, [])
 
   return (
