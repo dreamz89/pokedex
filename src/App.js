@@ -1,6 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
+
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import logo from './pokemon-logo.svg'
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  p {
+    margin: 0;
+  }
+`
 
 function App() {
   const [data, setData] = useState([])
@@ -16,26 +32,65 @@ function App() {
             .then(singlePokemon => singlePokemon)
         ))
           .then(values => setData(values))
-        })
+      })
       .catch(error => console.log(error.message))
   }, [])
 
   return (
-    <div className="App">
+    <Screen>
+      <GlobalStyle />
       <Header>
-        <Image src={logo} alt="logo" />
+        <HeaderLogo src={logo} alt="logo" />
       </Header>
-    </div>
+      <div>
+        <Container fluid="md">
+          <Row>
+          {data.map(pokemon => (
+            <Col xs={6} md={4} lg={3}>
+              <Card>
+                <Image src={pokemon.sprites.other.dream_world.front_default} alt="" />
+                <Name>{pokemon.name}</Name>
+              </Card>
+            </Col>
+          ))}
+          </Row>
+        </Container>
+      </div>
+    </Screen>
   );
 }
 
 export default App
+
+const Screen = styled.div`
+  background-color: #29465b;
+`
 
 const Header = styled.header`
   display: flex;
   justify-content: center;
 `
 
+const HeaderLogo = styled.img`
+  margin: 20px 0;
+  max-width: 400px;
+`
+
+const Card = styled.div`
+  background-color: white;
+  border-radius: 4px;
+  margin: 20px;
+  padding: 15px;
+`
+
 const Image = styled.img`
-  width: 50%;
+  height: 200px;
+  margin-bottom: 20px;
+  width: 100%;
+`
+
+const Name = styled.p`
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
 `
