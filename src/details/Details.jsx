@@ -1,7 +1,8 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
+import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { ModalHeader, Top, Image, Types, Type, Middle, Title, List, Evolution, EvolutionTitle, Stage, EvolutionImage, Name } from './Styles'
+import { ModalHeader, Top, Image, Types, Type, Middle, Title, List, ColLabel, ColBar, Bar, Evolution, EvolutionTitle, Stage, EvolutionImage, Name } from './Styles'
 
 function Details({ 
   singlePokemonData, 
@@ -34,31 +35,35 @@ function Details({
             </Types>
           </Top>
           <Middle>
-            <Col md={6}>
-              <div>
-                <Title>Abilities</Title>
-                <List>
-                  {singlePokemonData?.abilities.map(obj => 
-                    <p key={obj.ability.name}>{obj.ability.name}</p>
-                  )}
-                </List>
-              </div>
-              <div>
-                <Title>Moves</Title>
-                <List>
-                  {singlePokemonData?.types.map(obj => 
-                    <p key={obj.type.name}>{obj.type.name}</p>
-                  )}
-                </List>
-              </div>
+            <Col md={4}>
+              <Title>Abilities</Title>
+              <List>
+                {singlePokemonData?.abilities.map(obj => 
+                  <p key={obj.ability.name}>{obj.ability.name}</p>
+                )}
+              </List>
+              <Title>Moves</Title>
+              <List>
+                {singlePokemonData?.types.map(obj => 
+                  <p key={obj.type.name}>{obj.type.name}</p>
+                )}
+              </List>
             </Col>
-            <Col>
-              <div>
-                <Title>Stats</Title>
-                <List>
-                  
-                </List>
-              </div>
+            <Col md={8}>
+              <Title>Stats</Title>
+              <List>
+                {singlePokemonData?.stats.map(obj => 
+                  <Row>
+                    <ColLabel md={6}>
+                      <p key={obj.stat.name}>{obj.stat.name}</p>
+                    </ColLabel>
+                    <ColBar md={6}>
+                      <Bar width={obj.base_stat}></Bar>
+                      <p>{obj.base_stat}</p>
+                    </ColBar>
+                  </Row>
+                )}
+              </List>
             </Col>
           </Middle>
           <Evolution>

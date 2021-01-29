@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Col from 'react-bootstrap/Col'
 import Modal from 'react-bootstrap/Modal'
 
 export const ModalHeader = styled(Modal.Header)`
@@ -38,7 +39,24 @@ export const Title = styled.h6`
 
 export const List = styled.div`
   margin-bottom: 15px;
-  padding-left: 10px;
+  padding-left: 13px;
+`
+
+export const ColLabel = styled(Col)`
+  text-align: right;
+`
+
+export const ColBar = styled(Col)`
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+`
+
+export const Bar = styled.div`
+  background-color: #29465b;
+  margin-right: 10px;
+  height: 16px;
+  width: ${props => props.width}px
 `
 
 export const Evolution = styled.div`

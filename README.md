@@ -10,7 +10,7 @@ The Details-Page should display:
 - [x] abilities
 - [x] type
 - [x] order-number
-- [ ] stats
+- [x] stats
 - [x] possible evolutions
 - [x] moves
 
