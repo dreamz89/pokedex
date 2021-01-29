@@ -1,27 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { createGlobalStyle } from 'styled-components'
-
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import logo from './pokemon-logo.svg'
 import Details from './details/Details'
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
-  }
-
-  h5 {
-    font-weight: 700;
-  }
-
-  p {
-    margin: 0;
-  }
-`
+import { GlobalStyle, Screen, Header, HeaderLogo, Card, Image, Name } from './AppStyles'
 
 function App() {
   const [data, setData] = useState([])
@@ -74,42 +57,3 @@ function App() {
 }
 
 export default App
-
-const Screen = styled.div`
-  background-color: #29465b;
-`
-
-const Header = styled.header`
-  display: flex;
-  justify-content: center;
-`
-
-const HeaderLogo = styled.img`
-  margin: 20px 0;
-  max-width: 400px;
-`
-
-const Card = styled.div`
-  background-color: white;
-  border-radius: 4px;
-  margin: 20px;
-  padding: 15px;
-  position: relative;
-  transition: transform 100ms ease-out;
-
-  &:hover {
-    box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 10px;
-    cursor: pointer;
-    transform: scale(1.05);
-  }
-`
-
-const Image = styled.img`
-  height: 200px;
-  margin-bottom: 20px;
-  width: 100%;
-`
-
-const Name = styled.h5`
-  text-align: center;
-`
