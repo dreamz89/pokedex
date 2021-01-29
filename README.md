@@ -7,12 +7,12 @@ By using the PokeAPI (https://pokeapi.co/) create a Pokedex of all existing Poke
 The Details-Page should display:
 - [x] picture
 - [x] name
-- [ ] abilities
-- [ ] type
-- [ ] order-number
+- [x] abilities
+- [x] type
+- [x] order-number
 - [ ] stats
-- [ ] possible evolutions
-- [ ] moves
+- [x] possible evolutions
+- [x] moves
 
 ### Technical constraints
 - [x] JavaScript Framework: Angular, React or Vue

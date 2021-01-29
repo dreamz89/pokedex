@@ -8,7 +8,9 @@ import { GlobalStyle, Screen, Header, HeaderLogo, Card, Image, Name } from './Ap
 
 function App() {
   const [data, setData] = useState([])
+  const [evolutionData, setEvolutionData] = useState([])
   const [active, setActive] = useState(null)
+  const [activeEvolutionChain, setActiveEvolutionChain] = useState([])
 
   const handleClose = () => setActive(null)
 
@@ -25,7 +27,46 @@ function App() {
           .then(values => setData(values))
       })
       .catch(error => console.log(error.message))
+    
+    fetch('https://pokeapi.co/api/v2/evolution-chain/?limit=16')
+      .then(response => response.json())
+      .then(urls => {
+
+        Promise.all(urls.results.map(evo => 
+          fetch(evo.url)
+            .then(response => response.json())
+            .then(singleEvolutionData => singleEvolutionData)
+        ))
+          .then(values => setEvolutionData(values))
+      })
+      .catch(error => console.log(error.message))
   }, [])
+
+  // Format evolution chain data structure
+  let evolutionChains = []
+  evolutionData.forEach(chain => {
+    let group = []
+    
+    const recursion = (obj) => {
+      const idNum = +obj.species.url.slice(-4).replaceAll(/[s/]/g, '')
+      group.push({
+        name: obj.species.name,
+        id: idNum,
+        image: data?.find(({ id }) => id === idNum)?.sprites.other.dream_world.front_default
+      })
+      if (!obj.evolves_to[0]) return
+      recursion(obj.evolves_to[0])
+    }
+    recursion(chain.chain)
+    evolutionChains.push(group)
+  })
+
+  // Update activeEvolutionChain every time pokemon is clicked
+  useEffect(() => {
+    evolutionChains.forEach(chain => {
+      if (chain.find(({ id }) => id === active)) setActiveEvolutionChain(chain)
+    })
+  }, [active])
 
   return (
     <Screen>
@@ -48,12 +89,14 @@ function App() {
         </Container>
       </div>
       <Details
-        active={active} 
-        handleClose={handleClose} 
         singlePokemonData={data[active - 1]} 
+        active={active} 
+        activeEvolutionChain={activeEvolutionChain}
+        handleActive={setActive}
+        handleClose={handleClose}
       />
     </Screen>
-  );
+  )
 }
 
 export default App
