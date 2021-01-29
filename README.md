@@ -20,3 +20,6 @@ The Details-Page should display:
 - [ ] Typescript
 - [x] PokeAPI: https://pokeapi.co/
 - [ ] A minimum of 3 meaningful Unit Tests
+
+### Credits
+Pokemon type icons courtesy of Wikimedia https://commons.wikimedia.org/wiki/Category:Pok%C3%A9mon_types_icons
