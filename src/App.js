@@ -6,11 +6,16 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import logo from './pokemon-logo.svg'
+import Details from './details/Details'
 
 const GlobalStyle = createGlobalStyle`
   body {
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
+  }
+
+  h5 {
+    font-weight: 700;
   }
 
   p {
@@ -20,6 +25,9 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [data, setData] = useState([])
+  const [active, setActive] = useState(null)
+
+  const handleClose = () => setActive(null)
 
   useEffect(() => {
     fetch('https://pokeapi.co/api/v2/pokemon/?limit=40')
@@ -46,8 +54,8 @@ function App() {
         <Container fluid="md">
           <Row>
           {data.map(pokemon => (
-            <Col xs={6} md={4} lg={3}>
-              <Card>
+            <Col xs={6} md={4} lg={3} key={pokemon.id}>
+              <Card onClick={() => setActive(pokemon.id)}>
                 <Image src={pokemon.sprites.other.dream_world.front_default} alt="" />
                 <Name>{pokemon.name}</Name>
               </Card>
@@ -56,6 +64,11 @@ function App() {
           </Row>
         </Container>
       </div>
+      <Details
+        active={active} 
+        handleClose={handleClose} 
+        singlePokemonData={data[active - 1]} 
+      />
     </Screen>
   );
 }
@@ -81,6 +94,14 @@ const Card = styled.div`
   border-radius: 4px;
   margin: 20px;
   padding: 15px;
+  position: relative;
+  transition: transform 100ms ease-out;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 3px 10px;
+    cursor: pointer;
+    transform: scale(1.05);
+  }
 `
 
 const Image = styled.img`
@@ -89,8 +110,6 @@ const Image = styled.img`
   width: 100%;
 `
 
-const Name = styled.p`
-  font-size: 20px;
-  font-weight: 700;
+const Name = styled.h5`
   text-align: center;
 `
