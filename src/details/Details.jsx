@@ -1,8 +1,7 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
-import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { ModalHeader, Top, Image, Types, Type, Middle, Title, List, ColLabel, ColBar, Bar, Evolution, EvolutionTitle, Stage, EvolutionImage, Name } from './Styles'
+import { ModalHeader, Top, Image, Types, Type, Middle, Title, List, RowStat, ColLabel, ColBar, Bar, Evolution, EvolutionTitle, Stage, EvolutionImage, Name } from './Styles'
 
 function Details({ 
   singlePokemonData, 
@@ -35,7 +34,7 @@ function Details({
             </Types>
           </Top>
           <Middle>
-            <Col md={4}>
+            <Col xs={3} md={4}>
               <Title>Abilities</Title>
               <List>
                 {singlePokemonData?.abilities.map(obj => 
@@ -49,11 +48,11 @@ function Details({
                 )}
               </List>
             </Col>
-            <Col md={8}>
+            <Col xs={9} md={8}>
               <Title>Stats</Title>
               <List>
                 {singlePokemonData?.stats.map(obj => 
-                  <Row>
+                  <RowStat>
                     <ColLabel md={6}>
                       <p key={obj.stat.name}>{obj.stat.name}</p>
                     </ColLabel>
@@ -61,7 +60,7 @@ function Details({
                       <Bar width={obj.base_stat}></Bar>
                       <p>{obj.base_stat}</p>
                     </ColBar>
-                  </Row>
+                  </RowStat>
                 )}
               </List>
             </Col>

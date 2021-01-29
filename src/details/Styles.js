@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Modal from 'react-bootstrap/Modal'
 
@@ -40,6 +41,10 @@ export const Title = styled.h6`
 export const List = styled.div`
   margin-bottom: 15px;
   padding-left: 13px;
+`
+
+export const RowStat = styled(Row)`
+  flex-wrap: nowrap;
 `
 
 export const ColLabel = styled(Col)`
