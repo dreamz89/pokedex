@@ -38,11 +38,11 @@ export const Filter = styled.div`
 
   > div {
     max-width: 400px;
-
-    button {
-      background-color: #2b72b9;
-      border-color: #2b72b9;
-    }
+  }
+  
+  button {
+    background-color: #2b72b9;
+    border-color: #2b72b9;
   }
 `
 

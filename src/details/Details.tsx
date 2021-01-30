@@ -30,7 +30,7 @@ function Details({
             <Types>
               {singlePokemonData?.types.map(kind => (
                 <Type 
-                  src={`/types/${kind.type.name}.svg`} 
+                  src={require(`../types/${kind.type.name}.svg`).default}
                   alt={kind.type.name} 
                   key={kind.type.name}
                 />
