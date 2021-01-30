@@ -18,6 +18,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Screen = styled.div`
   background-color: #29465b;
+  min-height: 100vh;
 `
 
 export const Header = styled.header`
@@ -28,6 +29,21 @@ export const Header = styled.header`
 export const HeaderLogo = styled.img`
   margin: 20px 0;
   max-width: 400px;
+`
+
+export const Filter = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+
+  > div {
+    max-width: 400px;
+
+    button {
+      background-color: #2b72b9;
+      border-color: #2b72b9;
+    }
+  }
 `
 
 export const Card = styled.div`
