@@ -17,7 +17,7 @@ The Details-Page should display:
 ### Technical constraints
 - [x] JavaScript Framework: Angular, React or Vue
 - [x] Style Framework: any (e.g. Bootstrap or Material), but mandatory
-- [ ] Typescript
+- [x] Typescript
 - [x] PokeAPI: https://pokeapi.co/
 - [ ] A minimum of 3 meaningful Unit Tests
 

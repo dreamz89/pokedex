@@ -1,7 +1,9 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Col from 'react-bootstrap/Col'
+
 import { ModalHeader, Top, Image, Types, Type, Middle, Title, List, RowStat, ColLabel, ColBar, Bar, Evolution, EvolutionTitle, Stage, EvolutionImage, Name } from './Styles'
+import { Props } from './Types'
 
 function Details({ 
   singlePokemonData, 
@@ -9,7 +11,7 @@ function Details({
   activeEvolutionChain, 
   handleActive,
   handleClose
-}) {
+}: Props) {
   return (
     <>
       <Modal 
