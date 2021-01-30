@@ -1,8 +1,9 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal'
+import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import { ModalHeader, Top, Image, Types, Type, Middle, Title, List, RowStat, ColLabel, ColBar, Bar, Evolution, EvolutionTitle, Stage, EvolutionImage, Name } from './Styles'
+import { ModalHeader, Top, Image, Types, Type, Title, List, ListMoves, RowStat, ColLabel, ColBar, Bar, Evolution, EvolutionTitle, Stage, EvolutionImage, Name } from './Styles'
 import { Props } from './Types'
 
 function Details({ 
@@ -18,6 +19,7 @@ function Details({
         centered 
         show={active !== null} 
         onHide={handleClose}
+        dialogClassName="modal-80w"
       >
         <ModalHeader closeButton />
         <Modal.Body>
@@ -35,38 +37,44 @@ function Details({
               ))}
             </Types>
           </Top>
-          <Middle>
-            <Col xs={3} md={4}>
-              <Title>Abilities</Title>
-              <List>
-                {singlePokemonData?.abilities.map(obj => 
-                  <p key={obj.ability.name}>{obj.ability.name}</p>
-                )}
-              </List>
-              <Title>Moves</Title>
-              <List>
-                {singlePokemonData?.types.map(obj => 
-                  <p key={obj.type.name}>{obj.type.name}</p>
-                )}
-              </List>
-            </Col>
-            <Col xs={9} md={8}>
-              <Title>Stats</Title>
-              <List>
-                {singlePokemonData?.stats.map(obj => 
-                  <RowStat>
-                    <ColLabel md={6}>
-                      <p key={obj.stat.name}>{obj.stat.name}</p>
-                    </ColLabel>
-                    <ColBar md={6}>
-                      <Bar width={obj.base_stat}></Bar>
-                      <p>{obj.base_stat}</p>
-                    </ColBar>
-                  </RowStat>
-                )}
-              </List>
-            </Col>
-          </Middle>
+          <div>
+            <Row>
+              <Col xs={3}>
+                <Title>Abilities</Title>
+                <List>
+                  {singlePokemonData?.abilities.map(obj => 
+                    <p key={obj.ability.name}>{obj.ability.name}</p>
+                  )}
+                </List>
+              </Col>
+              <Col xs={9}>
+                <Title>Stats</Title>
+                <List>
+                  {singlePokemonData?.stats.map(obj => 
+                    <RowStat>
+                      <ColLabel md={5}>
+                        <p key={obj.stat.name}>{obj.stat.name}</p>
+                      </ColLabel>
+                      <ColBar md={7}>
+                        <Bar width={obj.base_stat}></Bar>
+                        <p>{obj.base_stat}</p>
+                      </ColBar>
+                    </RowStat>
+                  )}
+                </List>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={12}>
+                <Title>Moves</Title>
+                <ListMoves>
+                  {singlePokemonData?.moves.map(obj => 
+                    <p key={obj.move.name}>{obj.move.name}</p>
+                  )}
+                </ListMoves>
+              </Col>
+            </Row>
+          </div>
           <Evolution>
             <div>
               <EvolutionTitle>Evolution</EvolutionTitle>

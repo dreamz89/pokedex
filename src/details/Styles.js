@@ -29,10 +29,6 @@ export const Type = styled.img`
   width: 30px;
 `
 
-export const Middle = styled.div`
-  display: flex;
-`
-
 export const Title = styled.h6`
   border-left: 3px solid #2b72b9;
   padding-left: 10px;
@@ -41,6 +37,10 @@ export const Title = styled.h6`
 export const List = styled.div`
   margin-bottom: 15px;
   padding-left: 13px;
+`
+
+export const ListMoves = styled(List)`
+  columns: 3 auto;
 `
 
 export const RowStat = styled(Row)`
