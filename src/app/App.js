@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import logo from './pokemon-logo.svg'
-import Details from './details/Details'
-import { GlobalStyle, Screen, Header, HeaderLogo, Card, Image, Name } from './AppStyles'
+import logo from '../pokemon-logo.svg'
+import Details from '../details/Details'
+import { GlobalStyle, Screen, Header, HeaderLogo, Card, Image, Name } from './Styles'
 
 function App() {
   const [data, setData] = useState([])
@@ -18,8 +18,8 @@ function App() {
     fetch('https://pokeapi.co/api/v2/pokemon/?limit=40')
       .then(response => response.json())
       .then(listOfPokemon => {
-
-        Promise.all(listOfPokemon.results.map(pokemon => 
+        console.log(listOfPokemon.results)
+        Promise.all(listOfPokemon.results.map((pokemon) => 
           fetch(pokemon.url)
             .then(response => response.json())
             .then(singlePokemon => singlePokemon)
