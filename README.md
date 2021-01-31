@@ -1,5 +1,5 @@
 # Pokedex with Create React App
-Deployed at https://dreamz89.github.io/pokedex/
+Deployed at https://dreamz89.github.io/pokedex/  
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ### Task description
@@ -19,7 +19,7 @@ The Details-Page should display:
 - [x] Style Framework: any (e.g. Bootstrap or Material), but mandatory
 - [x] Typescript
 - [x] PokeAPI: https://pokeapi.co/
-- [ ] A minimum of 3 meaningful Unit Tests
+- [x] A minimum of 3 meaningful Unit Tests
 
 ### Credits
 Pokemon type icons courtesy of Wikimedia https://commons.wikimedia.org/wiki/Category:Pok%C3%A9mon_types_icons
