@@ -19,6 +19,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Screen = styled.div`
   background-color: #29465b;
   min-height: 100vh;
+  min-width: 100vw;
 `
 
 export const Header = styled.header`
@@ -29,6 +30,7 @@ export const Header = styled.header`
 export const HeaderLogo = styled.img`
   margin: 20px 0;
   max-width: 400px;
+  width: 80%;
 `
 
 export const Filter = styled.div`

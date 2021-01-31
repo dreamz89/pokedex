@@ -41,6 +41,10 @@ export const List = styled.div`
 
 export const ListMoves = styled(List)`
   columns: 3 auto;
+
+  @media (max-width: 576px) {
+    columns 2 auto;
+  }
 `
 
 export const RowStat = styled(Row)`

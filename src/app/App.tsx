@@ -114,7 +114,7 @@ function App() {
           </Filter>
           <Row>
           {filteredData.map(pokemon => (
-            <Col xs={6} md={4} lg={3} key={pokemon.id}>
+            <Col xs={12} sm={6} md={4} lg={3} key={pokemon.id}>
               <Card onClick={() => setActive(pokemon.id)}>
                 <Image src={pokemon.sprites.other.dream_world.front_default} alt="" />
                 <Name>{pokemon.name}</Name>

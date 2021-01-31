@@ -39,7 +39,7 @@ function Details({
           </Top>
           <div>
             <Row>
-              <Col xs={3}>
+              <Col xs={12} sm={3}>
                 <Title>Abilities</Title>
                 <List>
                   {singlePokemonData?.abilities.map(obj => 
@@ -47,7 +47,7 @@ function Details({
                   )}
                 </List>
               </Col>
-              <Col xs={9}>
+              <Col xs={12} sm={9}>
                 <Title>Stats</Title>
                 <List>
                   {singlePokemonData?.stats.map(obj => 
